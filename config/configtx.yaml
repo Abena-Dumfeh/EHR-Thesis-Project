@@ -1,0 +1,190 @@
+Organizations:
+#MSPDir tells Fabric where to find the MSP certificates (admin certs, cacerts, tlscacerts, etc.) This path must be correct to where your crypto-material is generated.
+  - &OrdererOrg
+    Name: OrdererOrg
+    ID: OrdererMSP
+    MSPDir: ../crypto-material/ordererOrganizations/example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrdererMSP.admin')"
+
+  - &AdminOrgHospital1
+    Name: AdminOrgHospital1
+    ID: AdminOrgHospital1MSP
+    MSPDir: ../crypto-material/peerOrganizations/adminorg.hospital1.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('AdminOrgHospital1MSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('AdminOrgHospital1MSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('AdminOrgHospital1MSP.admin')"
+    AnchorPeers:
+      - Host: peer0.adminorg.hospital1.com
+        Port: 7051
+
+  - &PatientOrgHospital1
+    Name: PatientOrgHospital1
+    ID: PatientOrgHospital1MSP
+    MSPDir: ../crypto-material/peerOrganizations/patientorg.hospital1.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('PatientOrgHospital1MSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('PatientOrgHospital1MSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('PatientOrgHospital1MSP.admin')"
+    AnchorPeers:
+      - Host: peer0.patientorg.hospital1.com
+        Port: 9051
+
+  - &DoctorOrgHospital1
+    Name: DoctorOrgHospital1
+    ID: DoctorOrgHospital1MSP
+    MSPDir: ../crypto-material/peerOrganizations/doctororg.hospital1.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('DoctorOrgHospital1MSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('DoctorOrgHospital1MSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('DoctorOrgHospital1MSP.admin')"
+    AnchorPeers:
+      - Host: peer0.doctororg.hospital1.com
+        Port: 10051
+      - Host: peer1.doctororg.hospital1.com
+        Port: 11051
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  ACLs: {}
+  Organizations: []
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "ANY Endorsement"
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+  Addresses:
+    - orderer1.example.com:7050
+    - orderer2.example.com:7050
+    - orderer3.example.com:7050
+  BatchTimeout: 2s
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  EtcdRaft:
+    Consenters:
+      - Host: orderer1.example.com
+        Port: 7050
+        ClientTLSCert: ../crypto-material/ordererOrganizations/example.com/orderers/orderer1.example.com/tls/server.crt
+        ServerTLSCert: ../crypto-material/ordererOrganizations/example.com/orderers/orderer1.example.com/tls/server.crt
+
+      - Host: orderer2.example.com
+        Port: 7050
+        ClientTLSCert: ../crypto-material/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+        ServerTLSCert: ../crypto-material/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+
+      - Host: orderer3.example.com
+        Port: 7050
+        ClientTLSCert: ../crypto-material/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+        ServerTLSCert: ../crypto-material/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+#  Organizations:
+    Options:
+      TickInterval: 500ms
+      ElectionTick: 10
+      HeartbeatTick: 1
+      MaxInflightBlocks: 5
+      SnapshotIntervalSize: 20 MB
+
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+  Capabilities:
+    <<: *OrdererCapabilities
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+
+  GenesisProfile:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrdererOrg
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+          - *AdminOrgHospital1
+          - *PatientOrgHospital1
+          - *DoctorOrgHospital1
+
+  EHRChannel1Profile:
+    <<: *ChannelDefaults
+    Consortium: SampleConsortium
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *AdminOrgHospital1
+        - *PatientOrgHospital1
+        - *DoctorOrgHospital1
+

@@ -1,0 +1,13 @@
+Patient: Kwame Adusei
+Doctor: Dr. Eric
+Visit Date: 2025-05-14
+
+Symptoms: mild fatigue, shortness of breath
+
+Blood Test:
+- Hemoglobin: 13.9 g/dL
+- WBC: 7,200 cells/µL
+- Glucose: 99 mg/dL
+
+Notes:
+Recommend increased hydration and follow-up in 2 weeks.

@@ -1,0 +1,42 @@
+#Env variables
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Node / frontend 
+node_modules/
+
+# Virtual environments
+venv/
+env/
+
+# Docker/Compose generated stuff
+*.log
+
+# Hyperledger Fabric crypto and artifacts
+crypto-config/
+crypto-material/
+channel-artifacts/
+production_data/
+organizations/
+fabric-samples/
+peer-ledgers/
+
+
+# IPFS and keys
+.ipfs/
+**/ipfs_config/
+**/keys/
+
+# Environment / secrets
+.env
+*.key
+*.pem
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store
+

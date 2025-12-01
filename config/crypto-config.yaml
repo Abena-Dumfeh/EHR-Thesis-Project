@@ -1,0 +1,34 @@
+OrdererOrgs:
+  - Name: Orderer
+    Domain: example.com
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer1
+      - Hostname: orderer2
+      - Hostname: orderer3
+
+PeerOrgs:
+  - Name: AdminOrgHospital1
+    Domain: adminorg.hospital1.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1           # One peer: peer0.adminorg.hospital1.com
+    Users:
+      Count: 1           # One admin user: Admin@adminorg.hospital1.com
+
+  - Name: PatientOrgHospital1
+    Domain: patientorg.hospital1.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1           # One peer: peer0.patientorg.hospital1.com
+    Users:
+      Count: 1           # One admin user: Admin@patientorg.hospital1.com
+
+  - Name: DoctorOrgHospital1
+    Domain: doctororg.hospital1.com
+    EnableNodeOUs: true
+    Template:
+      Count: 2           # Two peers: peer0.doctororg.hospital1.com and peer1.doctororg.hospital1.com
+    Users:
+      Count: 1           # One admin user: Admin@doctororg.hospital1.com
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Registration</title>
+</head>
+<body>
+    <h2>Doctor Registration</h2>
+    <form method="POST">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br>
+
+        <label>Department:</label><br>
+        <select name="department_id" required>
+            <option value="">-- Select Department --</option>
+            {% for dept in departments %}
+                <option value="{{ dept.department_id }}">{{ dept.name }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br>
+
+        <label>Contact:</label><br>
+        <input type="text" name="contact"><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+    <p><a href="{{ url_for('doctor_bp.login') }}">Already have an account? Login</a></p>
+</body>
+</html>

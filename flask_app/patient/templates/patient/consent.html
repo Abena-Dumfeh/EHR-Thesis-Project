@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Consent</title>
+</head>
+<body>
+    <h2>Grant or Revoke Consent</h2>
+
+    <form method="POST" action="{{ url_for('patient_bp.grant_consent') }}">
+        <label>Select EHR:</label>
+        <select name="ehr_id" required>
+            {% for ehr in ehr_list %}
+                <option value="{{ ehr.ehr_id }}">{{ ehr.record_type }} ({{ ehr.created_at }})</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Select Doctor:</label>
+        <select name="doctor_id" required>
+            {% for doctor in doctors %}
+                <option value="{{ doctor.doctor_id }}">{{ doctor.name }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Grant Access</button>
+    </form>
+
+    <h3>Active Consent Logs</h3>
+    {% for log in consents %}
+        <p>
+            EHR {{ log.ehr_id }} ➝ {{ log.doctor_name }}<br>
+            Granted: {{ log.granted_at }}<br>
+            {% if log.revoked_at %}
+                Revoked: {{ log.revoked_at }}
+            {% else %}
+                <form method="POST" action="{{ url_for('patient_bp.revoke_consent', consent_id=log.consent_id) }}">
+                    <button type="submit">Revoke Access</button>
+                </form>
+            {% endif %}
+        </p>
+    {% endfor %}
+</body>
+</html>

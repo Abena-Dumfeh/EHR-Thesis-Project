@@ -1,0 +1,30 @@
+Patient Name: Grace Mensah
+Date of Birth: 1995-06-21
+Visit Date: 2025-05-14
+Attending Doctor: Dr. Eric
+
+Chief Complaint:
+Patient reports occasional headaches and dizziness over the past 2 weeks.
+
+Vital Signs:
+- Blood Pressure: 128/82 mmHg
+- Heart Rate: 76 bpm
+- Respiratory Rate: 18 breaths/min
+- Temperature: 36.7°C
+
+Lab Test Results:
+- Fasting Blood Glucose: 92 mg/dL
+- Total Cholesterol: 185 mg/dL
+- HDL Cholesterol: 52 mg/dL
+- LDL Cholesterol: 110 mg/dL
+- Triglycerides: 140 mg/dL
+- Hemoglobin: 13.2 g/dL
+
+Assessment:
+Possible early signs of hypertension. Labs suggest slightly elevated cholesterol levels.
+
+Plan:
+Recommend lifestyle modifications including low-sodium diet, increased physical activity.
+Follow-up appointment scheduled in 4 weeks.
+
+End of Report.
