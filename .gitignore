@@ -40,3 +40,39 @@ peer-ledgers/
 .idea/
 .DS_Store
 
+
+
+# --- Hyperledger Fabric binaries (can be re-downloaded) ---
+bin/
+fabric-samples/
+*.tar.gz
+
+# --- Crypto material & channel artifacts (generated) ---
+crypto-config/
+crypto-material/
+channel-artifacts/
+*.block
+*.tx
+*.pem
+*.crt
+*.key
+*.sk
+
+# --- Docker / logs ---
+*.log
+
+# --- Python (if any) ---
+venv/
+__pycache__/
+*.pyc
+
+# --- Node.js (if you ever add a web app) ---
+node_modules/
+dist/
+build/
+
+# --- Editor / OS files ---
+.vscode/
+.idea/
+.DS_Store
+*.swp
