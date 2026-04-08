@@ -9,14 +9,22 @@ to address key challenges in healthcare data sharing, including data privacy, ow
 
 
 KEY CONTRIBUTIONS
+
 Designed an organization Hyperledger Fabric network with secure channel communication.
+
 Implemented patient-controlled consent management using smart contracts.
+
 Integrated IPFS for off-chain storage with blockchain-based hash verification
+
 Applied AES encryption for storage and CKKS homomorphic encryption for secure computation
+
 Developed a CLI-based full-stack system prototype supporting Admin, Doctor, and Patient roles
+
 Ensured FHIR-compliant healthcare data formatting
 
+
 🏗️ System Architecture
+
 📊 Architecture Diagram: <img width="686" height="355" alt="Screenshot from 2026-04-08 18-41-18" src="https://github.com/user-attachments/assets/9a2bbdfd-2f63-4b62-b389-d725ab010638" />
 
 1. Fabric Network Diagram: <img width="519" height="376" alt="Screenshot from 2026-04-08 18-31-12" src="https://github.com/user-attachments/assets/ed775eb6-ea35-4ffa-b698-b27687e39d6e" />
@@ -27,6 +35,7 @@ Ensured FHIR-compliant healthcare data formatting
 
 
 🛠️ TECH STACK
+
 Blockchain: 	Hyperledger Fabric
 
 Storage:	IPFS
@@ -43,36 +52,54 @@ DevOps:	Docker, Docker Compose
 
 
 ⚙️ SETUP INSTRUCTIONS
+
 1️⃣ Clone Repository: 
-git clone https://github.com/Abena-Dumfeh/EHR-Thesis-Project.git | 
+
+git clone https://github.com/Abena-Dumfeh/EHR-Thesis-Project.git 
+
 cd EHR-Thesis-Project
 
+
 2️⃣ Generate Crypto & Artifacts: 
-./scripts/gen-crypto.sh | 
-./scripts/gen-genesis.sh | 
+
+./scripts/gen-crypto.sh 
+
+./scripts/gen-genesis.sh 
+
 ./scripts/gen-channels.sh
 
 3️⃣ Start Network: 
+
 docker-compose up -d
 
 4️⃣ Create Channel & Join Peers: 
+
 ./scripts/join-channel1.sh
 
 5️⃣ Run Backend: 
-cd backend | 
-pip install -r requirements.txt | 
+
+cd backend 
+
+pip install -r requirements.txt 
+
 python app.py
 
+
 ▶️ USAGE WORKFLOW: 
+
 Doctor uploads EHR → encrypted + stored on IPFS
+
 CID stored in MySQL + blockchain
+
 Patient grants/revokes access via smart contract
+
 Authorized users retrieve and decrypt data
 
 
 RESULTS
 
 📊 Performance Evaluation
+
 1. Chaincode execution latency measured: Most functions executed within 0.172s to 0.190s, indicating excellent query/invoke performance.
 
 2. Block creation time analyzed: Block Creation Time ≈ 57 seconds
@@ -85,24 +112,40 @@ RESULTS
 
 
 🔐 Security Analysis
+
 AES encryption ensures data confidentiality
+
 CKKS enables computation on encrypted data
+
 Blockchain guarantees immutability and auditability
+
 Role-based access enforced via smart contracts
 
+
+
 📂 Project Structure
+
 ehr/
+
 ├── chaincode/
+
 ├── config/
+
 ├── docker/
+
 ├── encryption/
+
 ├── ipfs-storage/
+
 ├── scripts/
+
 ├── sql/
+
 ├── temp_ehr
 
 
 📌 Future Work: 
+
 Full homomorphic encryption integration for all operations |
 AI-based disease prediction on encrypted data | 
 Deployment on cloud infrastructure
