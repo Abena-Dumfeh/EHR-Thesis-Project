@@ -64,14 +64,19 @@ CID stored in MySQL + blockchain
 Patient grants/revokes access via smart contract
 Authorized users retrieve and decrypt data
 
+
 RESULTS
 
-
 📊 Performance Evaluation
-Chaincode execution latency measured
-Block creation time analyzed
-EHR upload & retrieval latency evaluated
-Encryption overhead assessed
+1. Chaincode execution latency measured: Most functions executed within 0.172s to 0.190s, indicating excellent query/invoke performance.
+
+2. Block creation time analyzed: Block Creation Time ≈ 57 seconds
+
+3. EHR upload latency: Although the file sizes differed significantly (1.35 KiB for AES and 835.27 KiB for CKKS), both were uploaded to IPFS in under 0.15 seconds.
+
+4. EHR retrieval latency: The AES-encrypted file (1.38 KB) was downloaded in 0.058 seconds, while the much larger CKKS-encrypted file (835.27 KB) was retrieved in 0.065 seconds. These results indicate that download latency is minimal and relatively unaffected by file size, especially in a local IPFS environment.
+
+5. Encryption overhead assessed: The encryption overhead is evident as the original EHR document (1.4 KB) and its extracted plaintext values (129 bytes) increase significantly to 836 KB after CKKS encryption.
 
 
 🔐 Security Analysis
@@ -92,13 +97,7 @@ ehr/
 ├── temp_ehr
 
 
-👤 Author
-
-Maame Abena Dumfeh
-MSc Computer Engineering
-Focus: Blockchain, Cybersecurity & Privacy-Preserving Systems
-
-📌 Future Work
-Full homomorphic encryption integration for all operations
-AI-based disease prediction on encrypted data
+📌 Future Work: 
+Full homomorphic encryption integration for all operations |
+AI-based disease prediction on encrypted data | 
 Deployment on cloud infrastructure
