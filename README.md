@@ -26,13 +26,17 @@ Ensured FHIR-compliant healthcare data formatting
 
 🏗️ System Architecture
 
-📊 Architecture Diagram: <img width="686" height="355" alt="Screenshot from 2026-04-08 18-41-18" src="https://github.com/user-attachments/assets/9a2bbdfd-2f63-4b62-b389-d725ab010638" />
+📊 Architecture Diagram: 
+<p align="center"> <img width="500" height="500" alt="Screenshot from 2026-04-08 18-41-18" src="https://github.com/user-attachments/assets/9a2bbdfd-2f63-4b62-b389-d725ab010638" /> </p>
 
-1. Fabric Network Diagram: <img width="519" height="376" alt="Screenshot from 2026-04-08 18-31-12" src="https://github.com/user-attachments/assets/ed775eb6-ea35-4ffa-b698-b27687e39d6e" />
+1. Fabric Network Diagram:
+<p align="center"> <img width="500" height="500" alt="Screenshot from 2026-04-08 18-31-12" src="https://github.com/user-attachments/assets/ed775eb6-ea35-4ffa-b698-b27687e39d6e" /> </p>
 
-2. Workflow for encrypted EHR upload to IPFS: <img width="570" height="291" alt="Screenshot from 2026-04-08 18-36-35" src="https://github.com/user-attachments/assets/c94a6d30-b5e8-4457-a4a8-be78927d4f55" />
+3. Workflow for encrypted EHR upload to IPFS:
+<p align="center"> <img width="500" height="500" alt="Screenshot from 2026-04-08 18-36-35" src="https://github.com/user-attachments/assets/c94a6d30-b5e8-4457-a4a8-be78927d4f55" /> </p>
 
-3. Role-Based Acces Control Model: <img width="634" height="276" alt="Screenshot from 2026-04-08 18-43-53" src="https://github.com/user-attachments/assets/bdb03d9f-8e21-4902-905e-fc2649fbcfc9" />
+5. Role-Based Acces Control Model:
+<p align="center"> <img width="500" height="500" alt="Screenshot from 2026-04-08 18-43-53" src="https://github.com/user-attachments/assets/bdb03d9f-8e21-4902-905e-fc2649fbcfc9" /> </p>
 
 
 🛠️ TECH STACK
