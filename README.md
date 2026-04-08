@@ -27,14 +27,19 @@ Ensured FHIR-compliant healthcare data formatting
 
 
 🛠️ TECH STACK
-Layer	Technology
-Blockchain	Hyperledger Fabric
-Storage	IPFS
-Backend	Python (Flask)
-Smart Contracts	Go (Chaincode)
-Database	MySQL
-Encryption	AES, CKKS (TenSEAL)
-DevOps	Docker, Docker Compose
+Blockchain: 	Hyperledger Fabric
+
+Storage:	IPFS
+
+Backend:	Python (Flask)
+
+Smart Contracts:	Go (Chaincode)
+
+Database:	MySQL
+
+Encryption:	AES, CKKS (TenSEAL)
+
+DevOps:	Docker, Docker Compose
 
 
 ⚙️ SETUP INSTRUCTIONS
