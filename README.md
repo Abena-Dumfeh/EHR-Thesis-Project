@@ -38,27 +38,27 @@ DevOps	Docker, Docker Compose
 
 
 ⚙️ SETUP INSTRUCTIONS
-1️⃣ Clone Repository
+1️⃣ Clone Repository: 
 git clone https://github.com/Abena-Dumfeh/EHR-Thesis-Project.git | 
 cd EHR-Thesis-Project
 
-2️⃣ Generate Crypto & Artifacts
+2️⃣ Generate Crypto & Artifacts: 
 ./scripts/gen-crypto.sh | 
 ./scripts/gen-genesis.sh | 
 ./scripts/gen-channels.sh
 
-3️⃣ Start Network
+3️⃣ Start Network: 
 docker-compose up -d
 
-4️⃣ Create Channel & Join Peers
+4️⃣ Create Channel & Join Peers: 
 ./scripts/join-channel1.sh
 
-5️⃣ Run Backend
+5️⃣ Run Backend: 
 cd backend | 
 pip install -r requirements.txt | 
 python app.py
 
-▶️ USAGE WORKFLOW
+▶️ USAGE WORKFLOW: 
 Doctor uploads EHR → encrypted + stored on IPFS
 CID stored in MySQL + blockchain
 Patient grants/revokes access via smart contract
